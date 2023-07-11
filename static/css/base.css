@@ -4,7 +4,26 @@ html{
     
 }
 
-.navbar-main{
+.navbar{
     background-color: #3d3c3a;
     
 }
+
+.smart-scroll{
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 1030;
+  }
+  .scrolled-down{
+     transform:translateY(-100%); transition: all 0.3s ease-in-out;
+  }
+  .scrolled-up{
+     transform:translateY(0); transition: all 0.3s ease-in-out;
+  }
+
+  .logo{
+    width: 200px;
+    height: auto;
+  }
