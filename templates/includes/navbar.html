@@ -1,62 +1,91 @@
+<nav class="navbar smart-scroll navbar-expand-lg navbar-dark bg-dark static-top">
+  <div class="container mr-auto">
+    <a class="navbar-brand " href="{% url 'home' %}">
+      <img src="/media/LogoSpiceGirls.png" class="d-inline-block align-top" alt="Logo SpiceGirls" height="180">
+    </a>
 
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
+      aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
-  <nav class="navbar smart-scroll navbar-expand-lg navbar-dark bg-dark static-top">
-    <div class="container">
-      <a class="navbar-brand float-left" href="#">
-        <img src="/media/SpiceGirlsLogo.png" alt="..." height="150">
-      </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav ms-auto">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Dropdown
-            </a>
-            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-              <li><a class="dropdown-item" href="#">Action</a></li>
-              <li><a class="dropdown-item" href="#">Another action</a></li>
-              <li>
-                <hr class="dropdown-divider">
-              </li>
-              <li><a class="dropdown-item" href="#">Something else here</a></li>
-            </ul>
-          </li>
-        </ul>
-      </div>
+    <div class="collapse navbar-collapse" id="navbarText">
+
+      <ul class="navbar-nav mx-auto">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'products' %}">Products</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true"
+            aria-expanded="false">
+            Spices
+          </a>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="#">Aniseed</a>
+            <a class="dropdown-item" href="#">Chilli</a>
+            <a class="dropdown-item" href="#">Tummeric</a>
+            <a class="dropdown-item" href="#">Chilli</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">All Spices</a>
+          </div>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true"
+            aria-expanded="false">
+            Blog & Receipts
+          </a>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="{% url 'recipes:recipes' %}">Receipts</a>
+            <a class="dropdown-item" href="#">Something else here</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">All Articles</a>
+          </div>
+        </li>
+
+      </ul>
+      <ul class="navbar-nav navbar-right">
+        <a href="#full-page-search" class="nav-link h-icon text-white d-none d-lg-block">
+          <i class="fa fa-search"></i>
+        </a>
+        <a href="#" class="nav-link text-white d-none d-lg-block"><i class="fas fa-user"></i>
+        </a>
+        <a href="#" class="nav-link text-white d-none d-lg-block">
+          <i class="fas fa-heart"></i>
+        </a>
+        <a href="#" class="nav-link text-white d-none d-lg-block ">
+          <i class="fas fa fa-shopping-cart"></i>
+        </a> 
+      </ul>     
     </div>
-  </nav>
+  </div>
+  
 
+</nav>
 
+<!--Copied from here and addapted: https://bootstrap-menu.com/_bootstrap4/detail-smart-hide.html-->
 
-  {% block postloadjs %}
+{% block postloadjs %}
 
 
 <script type="text/javascript">
-   $('body').css('padding-top', $('.navbar').outerHeight() + 'px')
+  // add padding top to show content behind navbar
+  $('body').css('padding-top', $('.navbar').outerHeight() + 'px')
 
-// detect scroll top or down
-if ($('.smart-scroll').length > 0) { // check if element exists
+  // detect scroll top or down
+  if ($('.smart-scroll').length > 0) { // check if element exists
     var last_scroll_top = 0;
-    $(window).on('scroll', function() {
-        scroll_top = $(this).scrollTop();
-        if(scroll_top < last_scroll_top) {
-            $('.smart-scroll').removeClass('scrolled-down').addClass('scrolled-up');
-        }
-        else {
-            $('.smart-scroll').removeClass('scrolled-up').addClass('scrolled-down');
-        }
-        last_scroll_top = scroll_top;
+    $(window).on('scroll', function () {
+      scroll_top = $(this).scrollTop();
+      if (scroll_top < last_scroll_top) {
+        $('.smart-scroll').removeClass('scrolled-down').addClass('scrolled-up');
+      } else {
+        $('.smart-scroll').removeClass('scrolled-up').addClass('scrolled-down');
+      }
+      last_scroll_top = scroll_top;
     });
-}
-   
-    
+  }
 </script>
 {% endblock %}
