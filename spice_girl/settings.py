@@ -33,7 +33,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 DEBUG = True
 
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['8000-fitabigail-spicegirlsre-ou6f5neogwd.ws-eu101.gitpod.io']
 
 
 # Application definition

@@ -4,21 +4,20 @@
 .home{
     background-color: #f0d5b8;
 }
+
  /* Section Special Offers */
 
 .special-offer{
     width: 50%;
     margin: auto;
 }
-.card-special{
-    width: 20rem;
-    margin: auto;
-    margin-bottom: 5rem;
-}
+
 .card-boder{
     border-color: #c63c4c;
     border-width: 2px;
 }
+
+
 .price-home{
     color: #c63c4c;
     
@@ -51,7 +50,7 @@ h2:after {
 .form-select {
     margin-bottom: 4rem;
     height: 2rem;
-    width: 20rem;  
+    width: 15rem;  
     margin-left: 1rem;
   
 }
@@ -90,3 +89,5 @@ h2:after {
     background: #46260144;
    
 }
+
+

@@ -6,7 +6,12 @@ html{
 
 .navbar{
     background-color: #3d3c3a;
-    
+        
+}
+
+.navbar-nav .nav-link{
+  font-size: 1.3rem;
+  font-weight: 400;
 }
 
 .smart-scroll{
@@ -27,3 +32,6 @@ html{
     width: 200px;
     height: auto;
   }
+
+
+  
