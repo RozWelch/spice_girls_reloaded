@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h3>Recipe Detail</h3>
+
+{{ recipe.title }}
+{{ recipe.preparation }}
+{{ recipe.subcategory }}
+{{ recipe.category }}
+<!-- <img src="{{ recipe.image }}"> -->
+<img srcset="{{ recipe.image }} 30w,
+{{ recipe.image }} 100w,
+{{ recipe.image }} 120w" 
+sizes="(max-width: 710px) 30px,
+(max-width: 991px) 100px,
+120px" class="image">
+
+<ol>
+    {% for ingredient in recipe.recipe.all %}
+
+    <li>
+        {{ ingredient.name }}
+        {{ ingredient.quantity }}
+
+        {% if ingredient.product != None %}
+        {{ ingredient.product }}
+        {% else %}
+        <p>'not available'</p>
+        {% endif %}
+    </li>
+    {% endfor %}
+</ol>
+
+
+{% endblock %}
