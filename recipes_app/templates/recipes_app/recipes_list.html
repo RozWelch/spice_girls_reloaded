@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h3>List View</h3>
+
+<a href="{% url 'recipes_app:add_recipe' %}">Add</a>
+
+{% if recipe_list %}
+
+<ul>
+    {% for recipe in recipe_list %}
+    <li>
+        <a href="{{ recipe.id }}">{{ recipe.title }}</a>
+        <a href="{% url 'recipes_app:recipe_detail' recipe.id %}">{{ recipe.title }}</a>
+    </li>
+    {% empty %}
+    <p>There are no recipe in the library.</p>
+    {% endfor %}
+</ul>
+
+{% else %}
+<p>There are no recipe in the library.</p>
+{% endif %}
+
+{% endblock %}

@@ -1,4 +1,5 @@
 from django.db import models
+from products.models import Spices
 
 # Create your models here.
 
@@ -40,9 +41,9 @@ class Recipe(models.Model):
     title = models.CharField(max_length=60, null=False,
                              blank=False)
     subcategory = models.ForeignKey(Subcategory, on_delete=models.CASCADE,
-                                    default='subcategory')
+                                    related_name='subcategory')
     category = models.ForeignKey(Category, on_delete=models.CASCADE,
-                                 default='category')
+                                 related_name='category')
     image = models.URLField(null=False, blank=False)
     preparation = models.TextField(null=False,
                                    blank=False)
@@ -66,8 +67,9 @@ class Ingredient(models.Model):
     ]
 
     recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE,
-                               default='recipe')
-    product = models.CharField(max_length=50, null=True, blank=True)  # This
+                               related_name='recipe')
+    product = models.ForeignKey(Spices, on_delete=models.CASCADE,
+                                related_name='spice', blank=True, null=True)  # This
     # field will be replace with the product if its sell by the shop
     name = models.CharField(max_length=30, null=False, blank=False)
     quantity = models.FloatField(null=False, blank=False)
