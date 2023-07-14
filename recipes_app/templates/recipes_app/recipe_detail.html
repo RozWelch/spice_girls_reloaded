@@ -1,35 +1,59 @@
 {% extends "base.html" %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/recipes.css' %}">
+{% endblock %}
+
 {% block content %}
 
-<h3>Recipe Detail</h3>
+<div class="container-fluid">
+    <div class="d-flex center">
+        <h2>{{ recipe.title }}</h2>
+    </div>
+    <div class="row d-flex">
 
-{{ recipe.title }}
-{{ recipe.preparation }}
-{{ recipe.subcategory }}
-{{ recipe.category }}
-<!-- <img src="{{ recipe.image }}"> -->
-<img srcset="{{ recipe.image }} 30w,
-{{ recipe.image }} 100w,
-{{ recipe.image }} 120w" 
-sizes="(max-width: 710px) 30px,
-(max-width: 991px) 100px,
-120px" class="image">
+        <div class="col d-flex center">
+            <img srcset="{{ recipe.image }} 50w,
+            {{ recipe.image }} 100w,
+            {{ recipe.image }} 120w" sizes="(max-width: 710px) 50px,
+            (max-width: 991px) 100px,
+            120px" class="image">
+        </div>
 
-<ol>
-    {% for ingredient in recipe.recipe.all %}
+        <div class="col">
 
-    <li>
-        {{ ingredient.name }}
-        {{ ingredient.quantity }}
+            <h5>Ingredients</h5>
 
-        {% if ingredient.product != None %}
-        {{ ingredient.product }}
-        {% else %}
-        <p>'not available'</p>
-        {% endif %}
-    </li>
-    {% endfor %}
-</ol>
+            <ol>
+                {% for ingredient in recipe.recipe.all %}
+                <li>
+                    {{ ingredient.name }}
+                    {{ ingredient.quantity }}
+
+                    {% if ingredient.product != None %}
+                    <a href="{url 'products_app:products'}"> {{ ingredient.product }}</a>
+                    {% else %}
+                    <p>'.'</p>
+                    {% endif %}
+                </li>
+                {% endfor %}
+            </ol>
+
+        </div>
+    </div>
+
+    <div class="row d-flex">
+
+        {{ recipe.preparation }}
+        {{ recipe.subcategory }}
+        {{ recipe.category }}
+
+    </div>
+
+</div>
 
 
+
+</div>
 {% endblock %}

@@ -1,0 +1,15 @@
+/*  TITLE  */
+
+.center {
+    justify-content: space-around!important;
+}
+
+/*  CONTENT  */
+
+/*  IMAGE  */
+
+.recipe_img {
+    max-height: 16em;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+}

@@ -4,6 +4,7 @@ from .models import Spices, Category
 
 class SpicesAdmin(admin.ModelAdmin):
     list_display = (
+        'id',
         'sku',
         'name',
         'category',

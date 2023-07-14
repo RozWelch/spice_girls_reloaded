@@ -1,25 +1,84 @@
 {% extends "base.html" %}
-{% block content %}
+{% load static %}
 
-<h3>List View</h3>
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/recipes.css' %}">
+{% endblock %}
+
+{% block content %}
 
 <a href="{% url 'recipes_app:add_recipe' %}">Add</a>
 
-{% if recipe_list %}
+<div class="col12 ">
+    <div class="row text-center mt-5">
+        <div class="filter-home">
+            <select class="form-select form-select-lg float-right ml-4" aria-label=".form-select-lg example">
+                <option selected>Category(A-Z)</option>
+                <option value="1">One</option>
+                <option value="2">Two</option>
+                <option value="3">Three</option>
+            </select>
+        </div>
+    </div>
+</div>
+<div class="col d-flex justify-content-end" style="line-height: 1.5em;">
+    {% include 'includes/paginator.html' %}
+</div>
+<div class="container-fluid home">
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4 my-5">
 
-<ul>
-    {% for recipe in recipe_list %}
-    <li>
-        <a href="{{ recipe.id }}">{{ recipe.title }}</a>
-        <a href="{% url 'recipes_app:recipe_detail' recipe.id %}">{{ recipe.title }}</a>
-    </li>
-    {% empty %}
-    <p>There are no recipe in the library.</p>
-    {% endfor %}
-</ul>
+        {% if recipe_list %}
 
-{% else %}
-<p>There are no recipe in the library.</p>
-{% endif %}
+        {% for recipe in recipe_list %}
+        <div class="col mb-2">
 
+            <div class="card h-100">
+                <img class="card-img-top recipe_img" src="{{ recipe.image }}" alt="Card image cap">
+                <div class="card-img-overlay d-flex justify-content-end">
+
+                </div>
+                <div class="card-body">
+                    <div style="height: 3em;">
+                        <h5> <a href="{% url 'recipes_app:recipe_detail' recipe.id %}" class="stretched-link"
+                                style="position: relative;">{{ recipe.title }}</a>
+                        </h5>
+                    </div>
+                    <div class="row align-items-center ">
+                        <div class="col-sm ">
+                            <p class="card-text font-weight-bold">{{ recipe.type_cooking}}</p>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="float-left">
+                        <div class="d-flex flex-row">
+                            <div class="text-warning mb-1 me-2">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                            </div>
+                            <span>1</span>
+                        </div>
+                    </div>
+
+                    <p class="card-text text-muted text-capitalize mt-5"><small><i
+                                class="fas fa-tags">{{ recipe.category}}</i></small>
+                    </p>
+                    <p>
+                        <a href="{% url 'recipes_app:recipe_detail' recipe.id %}"
+                            class="btn btn-primary stretched-link " style="position: relative;">Go to recipe</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        <p>There are no recipe in the library.</p>
+        {% endfor %}
+
+        {% else %}
+        <p>There are no recipe in the library.</p>
+        {% endif %}
+
+    </div>
+</div>
 {% endblock %}

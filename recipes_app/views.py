@@ -13,7 +13,7 @@ class RecipesList(ListView):
     """ VIEW FOR LIST ALL RECICPES """
     model = Recipe
     queryset = Recipe.objects.all().order_by('title')
-    # paginate_by = 4
+    paginate_by = 4
     template_name = "recipes_app/recipes_list.html"
 
 
@@ -24,18 +24,12 @@ class RecipeDetail(DetailView):
 class AddRecipe(CreateView):
     form_class = AddRecipe
     template_name = "recipes_app/add_recipe.html"
-    success_url = (f"../../recipes/{{ recipe.id }}")
+    success_url = (f"../../recipes")
     message = "Success"
 
 
 class AddIngredient(CreateView):
     form_class = AddIngredient
     template_name = "recipes_app/add_ingredient.html"
-    success_url = "../../recipes/success"
-    message = "Success"
-
-
-class Success(CreateView):
-    form_class = AddIngredient
-    template_name = "recipes_app/success.html"
-    message = "Success"
+    success_url = (f"../../recipes/{{ recipe.id }}")
+    message = 'success'
